@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue QuickStart </title>
+</head>
+<body>
+    <!-- cmd / shift -->
+    <!-- div#app 准备元素div 被vue控制-->
+    <div id="app">
+        <h1>{{message}}</h1>
+        <h1>{{count}}</h1>
+    </div>
+
+    <script type="module">
+        //import vue module
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        //创建vue app的应用实例，控制视图的元素
+        createApp({
+            data(){
+                return{
+                    message: 'Hello Vue',
+                    count : 100
+                }
+            }
+            
+
+        }).mount('#app');
+        //接管div#app
+
+    </script>
+    
+</body>
+</html>
