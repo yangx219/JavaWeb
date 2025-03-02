@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Object define</title>
+</head>
+<body>
+    <script>
+        // 1. 自定义对象
+        let user = {
+            name: 'Tom',
+            age: 18,
+            gender: 'male',
+            sing(){alert(this.name + 'Happy New Year!');}
+            // 不要用箭头函数，否则this使用有问题             
+        }
+
+        // 2. 调用对象属性/方法
+        alert(user.name);
+        user.sing();
+
+        alert(JSON.stringify(user));//对象-》字符串
+
+
+        //json->Object  JSON.parse()
+        let stringJson = '{"name": "yang","age":"18"}';
+        alert(JSON.parse(stringJson).name);
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Event Listener</title>
+</head>
+<body>
+    <h1>Click event 鼠标点击</h1>
+    <input type="button" id="btn1" value="Click Me">
+    <input type="button" id="btn2" value="Click Me">
+
+    <script>
+        //Event Listener 可以绑定多次同一事件
+        document.querySelector('#btn1').addEventListener('click',() => {
+            console.log('I have clicked button 1');
+            
+        });
+
+        document.querySelector('#btn1').addEventListener('click',() => {
+            console.log('I have clicked button 111111');
+            
+        });
+
+        //早期版本 后边事件会覆盖前边的
+        document.querySelector('#btn2').onclick = ()=>{
+            console.log('I have clicked button 2');
+        }
+        document.querySelector('#btn2').onclick = ()=>{
+            console.log('I have clicked button 22222');
+        }
+    </script>
+</body>
+</html>

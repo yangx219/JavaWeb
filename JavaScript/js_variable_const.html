@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS variable and const</title>
+</head>
+<body>
+    <h1>let -- variable(no need declare type)</h1>
+    <h1>const -- constant</h1>
+
+    
+    <script>
+        // <!-- 模版字符串 - 简化字符串拼接 -->
+        let name = 'Tom';
+        let age = 18;
+        console.log('I am'+ name + ', I have '+age+' years old ');
+        console.log(`I am ${name}, I have ${age} years old`);
+        
+    </script>
+    <script>
+        // 1. 声明变量 不用声明变量类型
+        let a  = 10;
+        a = "This is a !";
+
+        alert(a);
+
+
+        // 2. 声明常量
+        const PI = 3.14;
+        console.log(PI);//F12 打开浏览器控制台
+
+        // 3.直接输出到body区
+        document.write(PI);
+    </script>
+</body>
+</html>
