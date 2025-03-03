@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Système d'aide à l'apprentissage intelligent Tlias</title>
+    <style>
+        .navbar {
+            background-color: #b5b3b3;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-weight: bold;
+            color: white;
+            font-family: "Times New Roman";
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .search-form {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .search-form input[type="text"], .search-form select {
+            padding: 5px;
+            width: 260px;
+        }
+        .search-form button {
+            padding: 5px 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .avatar {
+            width: 30px;
+            height: 30px;
+        }
+        .footer {
+            background-color: #b5b3b3;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+        }
+        #container {
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- navbar -->
+        <div class="navbar">
+            <h1>Système d'aide à l'apprentissage intelligent Tlias</h1>
+            <a href="#">Déconnexion</a>
+        </div>
+
+        <!-- search form  -->
+        <form class="search-form" action="/search" method="post">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" placeholder="Entrez un nom">
+
+            <label for="gender">Sexe :</label>
+            <select id="gender" name="gender">
+                <option value=""></option>
+                <option value="1">Homme</option>
+                <option value="2">Femme</option>
+            </select>
+
+            <label for="position">Poste :</label>
+            <select id="position" name="position">
+                <option value=""></option>
+                <option value="1">Professeur principal</option>
+                <option value="2">Conférencier</option>
+                <option value="3">Responsable des étudiants</option>
+                <option value="4">Responsable pédagogique</option>
+                <option value="5">Conseiller</option>
+            </select>
+
+            <button type="submit">Rechercher</button>
+            <button type="reset">Effacer</button>
+        </form>
+
+        <!-- Show area for the table -->
+        <table>
+            <!-- table header -->
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Nom</th>
+                    <th>Sexe</th>
+                    <th>Avatar</th>
+                    <th>Poste</th>
+                    <th>Date d'embauche</th>
+                    <th>Dernière modification</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <!-- the content body of the table -->
+            <tbody>
+                <!-- vfor -->
+                <tr v-for="(e, index) in empList" :key="e.id">
+                    <td>{{index +1}}</td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.gender == 1?'Homme':'Femme'}}</td>
+                    <!-- on peut pas mettre le {{}} dans le label-->
+                    <td><img class="avatar" src="{{e.image}}" alt="{{e.name}}"></td>
+                    <td>{{e.job}}</td>
+                    <td>{{e.entrydate}}</td>
+                    <td>{{e.updatetime}}</td>
+                    <td>
+                        <button>Éditer</button>
+                        <button>Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer class="footer">
+            <p>Jiangsu Chuanzi Boke Éducation Technologie SA</p>
+            <p>Copyright 2006-2024 Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+          data() {
+            return {
+              
+              empList: [
+                { "id": 1,
+                  "name": "Henri",
+                  "image": "https://web-framework.oss-cn-hangzhou.aliyuncs.com/2023/4.jpg",
+                  "gender": 1,
+                  "job": "1",
+                  "entrydate": "2023-06-09",
+                  "updatetime": "2024-07-30T14:59:38"
+                },
+                {
+                  "id": 2,
+                  "name": "Luc",
+                  "image": "https://web-framework.oss-cn-hangzhou.aliyuncs.com/2023/1.jpg",
+                  "gender": 1,
+                  "job": "1",
+                  "entrydate": "2020-05-09",
+                  "updatetime": "2023-07-01T00:00:00"
+                },
+                {
+                  "id": 3,
+                  "name": "Elise",
+                  "image": "https://web-framework.oss-cn-hangzhou.aliyuncs.com/2023/2.jpg",
+                  "gender": 2,
+                  "job": "2",
+                  "entrydate": "2021-06-01",
+                  "updatetime": "2023-07-01T00:00:00"
+                }
+              ]
+            }
+          },
+        }).mount('#container')
+      </script>
+</body>
+</html>

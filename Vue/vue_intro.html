@@ -6,18 +6,22 @@
     <title>Vue QuickStart </title>
 </head>
 <body>
+     <!-- *************************************** -->
     <!-- cmd / shift -->
-    <!-- div#app 准备元素div 被vue控制-->
+    <!-- div#app **control by vue**-->
     <div id="app">
+        <!--  插值表达式的写法：{{...}} -->
         <h1>{{message}}</h1>
         <h1>{{count}}</h1>
     </div>
+
+    <!-- *************************************** -->
 
     <script type="module">
         //import vue module
         import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
-        //创建vue app的应用实例，控制视图的元素
+        //create vue app
         createApp({
             data(){
                 return{
@@ -27,10 +31,9 @@
             }
             
 
-        }).mount('#app');
-        //接管div#app
-
+        }).mount('#app');//control div#app
+        
     </script>
-    
+    <!-- *************************************** -->
 </body>
 </html>
