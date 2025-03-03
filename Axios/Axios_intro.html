@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios QuickStart</title>
+</head>
+<body>
+
+  <button id="getData">GET</button>
+  <button id="postData">POST</button>
+  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    //GET 
+    document.querySelector('#getData').onclick = function() {
+      axios({
+        url:'https://mock.apifox.cn/m1/3083103-0-default/emps/list',
+        method:'get'
+      }).then(function(res) {
+        console.log(res.data);
+      }).catch(function(err) {
+        console.log(err);
+      })
+    }
+    
+    //POST
+    document.querySelector('#postData').onclick = function() {
+      axios({
+        url:'https://mock.apifox.cn/m1/3083103-0-default/emps/update',
+        method:'post'
+      }).then(function(res) {
+        console.log(res.data);
+      }).catch(function(err) {
+        console.log(err);
+      })
+    }
+  </script>
+</body>
+</html>
