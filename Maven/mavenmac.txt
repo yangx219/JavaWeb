@@ -24,4 +24,11 @@
     查看版本信息
     mvc -v
 
+3.配置
 
+    cd soft/apache-maven-3.9.9
+    code . -r
+    打开conf 里边有settings.xml
+
+
+del /s *.lastUpdated
