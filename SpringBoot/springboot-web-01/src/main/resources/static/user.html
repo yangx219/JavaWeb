@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Données de la liste des utilisateurs</title>
+    <style>
+        /* Définir le CSS pour embellir le tableau */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 24px;
+        }
+        tr {
+            height: 40px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+        }
+        thead {
+            background-color: #e8e8e8;
+        }
+        h1 {
+            text-align: center;
+            font-family: serif;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Données de la liste des utilisateurs</h1>
+    <!-- Définir un tableau comprenant 6 colonnes : ID, Nom d'utilisateur, Mot de passe, Nom, Âge, Date de mise à jour -->
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom d'utilisateur</th>
+            <th>Mot de passe</th>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Date de mise à jour</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in userList">
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.updateTime}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Inclure axios -->
+<script src="js/axios.min.js"></script>
+<script type="module">
+    import { createApp } from './js/vue.esm-browser.js'
+    createApp({
+        data() {
+            return {
+                userList: []
+            }
+        },
+        methods: {
+            async search(){
+                const result = await axios.get('/list');
+                this.userList = result.data;
+            }
+        },
+        mounted() {
+            this.search();
+        }
+    }).mount('#app')
+</script>
+
+</body>
+</html>
