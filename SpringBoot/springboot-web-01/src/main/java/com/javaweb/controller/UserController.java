@@ -2,6 +2,11 @@ package com.javaweb.controller;
 
 import cn.hutool.core.io.IoUtil;
 import com.javaweb.pojo.User;
+import com.javaweb.service.UserService;
+import com.javaweb.service.impl.UserServiceImpl;
+import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,14 +24,11 @@ import java.util.stream.Collectors;
  */
 @RestController//@ResponseBody --->json
 public class UserController {
-    @RequestMapping("/list")
+    /*@RequestMapping("/list")
     public List<User> list() throws IOException {
 
         //1.load and read the user.txt, get user info
-//        InputStream in = this.getClass().getResourceAsStream("user.txt");
         InputStream in = new ClassPathResource("user.txt").getInputStream();
-//        InputStream in = new FileInputStream(new File("src/main/resources/user.txt"));
-
         ArrayList<String> lines = IoUtil.readLines(in, StandardCharsets.UTF_8,new ArrayList<>());
 
 
@@ -47,5 +49,39 @@ public class UserController {
 
         //3.return data to the front-end
         return userList;
+    }*/
+
+    //methode 1. Injection d’attributs 属性注入
+    /*@Autowired
+    private UserService userService;*/
+
+    //method 2. Injection par constructeur
+    /*private final UserService userService;
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }*/
+
+    //method 3. Injection par setter
+    //option+enter
+    private UserService userService;
+
+    @Qualifier("userServiceImpl")
+    //@Resource(name = "userServiceImpl2")
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
+
+
+    @RequestMapping("/list")
+    public List<User> list() throws IOException {
+        //1.appel sevice, get data
+        List<User> userList = userService.findAll();
+
+        //3.return data to the front-end
+        return userList;
+    }
+
+
 }
