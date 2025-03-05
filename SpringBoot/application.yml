@@ -1,0 +1,11 @@
+#definition object / Map collection
+user:
+  name: Tom
+  age: 18
+  gender: H
+
+#definition Array/List/set
+hobby:
+  -Java
+  -Game
+  -Sport
