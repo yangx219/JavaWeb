@@ -1,6 +1,7 @@
 package com.javaweb.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import com.javaweb.pojo.*;
 
@@ -20,4 +21,18 @@ import java.util.List;
 public interface UserMapper {
     @Select("select * from user")
     public List<User> findAll();
+
+    @Select("delete from user where id = #{id}")
+    public Integer deleteById(Integer id);
+
+    @Select("insert into user(username,password,name,age) values (#{username},#{password},#{name},#{age})")
+    public void insert(User user);
+
+
+    @Select("update user set username = #{username},password = #{password},name = #{name}, age = #{age} where id = #{id}")
+    public void update(User user);
+
+    @Select("select * from user where username = #{username} and password = #{password}")
+    public User findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+
 }
