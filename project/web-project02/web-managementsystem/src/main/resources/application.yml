@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: web-managementsystem
+  #infomation for the connection of database
+  datasource:
+    url: jdbc:mysql://localhost:3306/managementSystem
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+
+
+#Configure mybatis log
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # mapping for the camel case
+    map-underscore-to-camel-case: true
+
+
+
+
+
