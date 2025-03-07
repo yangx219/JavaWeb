@@ -10,4 +10,12 @@ public interface DeptService {
      * 查询所有部门
      */
     public List<Dept> findAll();
+
+    /**
+     * Supprimer la department par id
+     * @param id
+     */
+    void deleteById(Integer id);
+
+    void add(Dept dept);
 }

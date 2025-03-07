@@ -30,7 +30,7 @@ public class DeptController {
     }
 
     /**
-     * Supprimer la department par ID
+     * Supprimer le department par ID
      * method 1 : HttpServletRequest request
      */
     /*@DeleteMapping("/depts")
@@ -46,7 +46,7 @@ public class DeptController {
     }
 */
     /**
-     * Supprimer la department par ID
+     * Supprimer le department par ID
      * method 2 : @RequestParam
      * si la paramètre est pas obligatoire :
      * : @RequestParam(value = "id", required = false)
@@ -59,14 +59,26 @@ public class DeptController {
     }*/
 
     /**
-     * Supprimer la department par ID
+     * Supprimer le department par ID
      * method 3 : omettre @RequestParam
      * mais le nome est pareil
      */
     @DeleteMapping("/depts")
     public Result delete(Integer id) {
         System.out.println("Supprimer la department par ID: " + id);
+        deptService.deleteById(id);
         return Result.success();
 
+    }
+
+
+    /**
+     * Ajouter le department
+     */
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept) {
+        System.out.println("Ajouter le department : " + dept);
+        deptService.add(dept);
+        return Result.success();
     }
 }
