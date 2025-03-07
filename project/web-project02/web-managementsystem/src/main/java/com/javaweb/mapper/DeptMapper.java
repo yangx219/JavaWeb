@@ -29,4 +29,10 @@ public interface DeptMapper {
     //Ajouter le department
     @Insert("insert into dept(name, create_time, update_time) values(#{name},#{createTime}, #{updateTime})")
     void insert(Dept dept);
+
+    /**
+     * interroger le department par id
+     */
+    @Select("select id, name, create_time, update_time from dept where id = #{id}")
+    Dept getById(Integer id);
 }

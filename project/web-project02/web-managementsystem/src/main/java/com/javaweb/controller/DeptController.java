@@ -81,4 +81,22 @@ public class DeptController {
         deptService.add(dept);
         return Result.success();
     }
+
+    /**
+     * interroger le department par id
+     */
+    /*@GetMapping("/depts/{id}")
+    public Result getInfo(@PathVariable("id") Integer deptId) {
+        System.out.println("interroger le department par id : " +deptId);
+        return Result.success();
+
+    }*/
+
+    @GetMapping("/depts/{id}")
+    public Result getInfo(@PathVariable Integer id) {
+        System.out.println("Interroger le department par id : " +id);
+        Dept dept = deptService.getById(id);
+        return Result.success(dept);
+
+    }
 }
