@@ -4,6 +4,7 @@ import com.javaweb.pojo.Dept;
 import com.javaweb.pojo.Result;
 import com.javaweb.service.DeptService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,8 @@ import java.util.List;
 /**
  * Department management controller
  */
+@Slf4j
+@RequestMapping("/depts")
 @RestController//body json
 public class DeptController {
     @Autowired
@@ -23,7 +26,7 @@ public class DeptController {
      * 查询部门列表
      */
     //@RequestMapping(value = "/depts", method = RequestMethod.GET)
-    @GetMapping("/depts")
+    @GetMapping
     public Result list(){
         List<Dept> deptList = deptService.findAll();
         return Result.success(deptList);
@@ -63,9 +66,10 @@ public class DeptController {
      * method 3 : omettre @RequestParam
      * mais le nome est pareil
      */
-    @DeleteMapping("/depts")
+    @DeleteMapping
     public Result delete(Integer id) {
-        System.out.println("Supprimer la department par ID: " + id);
+//        System.out.println("Supprimer la department par ID: " + id);
+        log.info("Supprimer la department par id:{}", id);
         deptService.deleteById(id);
         return Result.success();
 
@@ -75,9 +79,10 @@ public class DeptController {
     /**
      * Ajouter le department
      */
-    @PostMapping("/depts")
+    @PostMapping
     public Result add(@RequestBody Dept dept) {
-        System.out.println("Ajouter le department : " + dept);
+//        System.out.println("Ajouter le department : " + dept);
+        log.info("Ajouter le department :{}", dept);
         deptService.add(dept);
         return Result.success();
     }
@@ -92,11 +97,23 @@ public class DeptController {
 
     }*/
 
-    @GetMapping("/depts/{id}")
+    @GetMapping("/{id}")
     public Result getInfo(@PathVariable Integer id) {
-        System.out.println("Interroger le department par id : " +id);
+//        System.out.println("Interroger le department par id : " +id);
+        log.info("Interroger le department par id:{}", id);
         Dept dept = deptService.getById(id);
         return Result.success(dept);
 
+    }
+
+    /**
+     * Modifier le department
+     * @param dept
+     */
+    @PutMapping
+    public Result update(@RequestBody Dept dept) {
+        System.out.println("Updater le department : " + dept);
+        deptService.update(dept);
+        return Result.success();
     }
 }

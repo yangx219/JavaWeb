@@ -12,7 +12,7 @@ public interface DeptService {
     public List<Dept> findAll();
 
     /**
-     * Supprimer la department par id
+     * Supprimer le department par id
      * @param id
      */
     void deleteById(Integer id);
@@ -20,4 +20,6 @@ public interface DeptService {
     void add(Dept dept);
 
     Dept getById(Integer id);
+
+    void update(Dept dept);
 }
