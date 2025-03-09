@@ -4,6 +4,7 @@
 <mapper namespace="com.javaweb.mapper.EmpMapper">
     <select id="list" resultType="com.javaweb.pojo.Emp">
         select e.*, d.name deptName from emp as e left join dept as d on e.dept_id = d.id
+        /*SQL dynamique*/
         <where>
             <if test="name != null and name != ''">
                 e.name like concat('%',#{name},'%')

@@ -23,4 +23,7 @@ public class Emp {
     private LocalDateTime updateTime; // Date de mise à jour
 
     private String deptName;
+
+    //Encapsulation des informations sur l'expérience professionnelle（Encapsulation of work experience information）
+    private List<EmpExpr> exprList;
 }

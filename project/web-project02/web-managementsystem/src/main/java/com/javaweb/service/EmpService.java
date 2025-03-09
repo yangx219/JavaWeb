@@ -15,4 +15,10 @@ public interface EmpService {
                          LocalDate begin, LocalDate end);*/
 
     PageResult<Emp> page(EmpQueryParam empQueryParam);
+
+    /**
+     * Ajouter un nouvel employé
+     * @param emp
+     */
+    void save(Emp emp);
 }
