@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Gestion des employés
@@ -54,5 +57,31 @@ public class EmpController {
         empService.save(emp);
         return Result.success();
     }
+
+    /**
+     * Supprimer les employés -- Arrays
+     * @param ids
+     * @return
+     */
+    /*@DeleteMapping
+    public Result delete(Integer[] ids){
+        log.info("Supprimer les employés : {}", Arrays.toString(ids));
+        return Result.success();
+    }*/
+
+
+
+    /**
+     * Supprimer les employés -- List
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids){
+        log.info("Supprimer les employés : {}", ids);
+        empService.delete(ids);
+        return Result.success();
+    }
+
 }
 

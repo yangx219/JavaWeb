@@ -17,4 +17,11 @@ public interface EmpExprMapper {
      */
 
     void insertBatch(List<EmpExpr> exprList);
+
+    /**
+     * Suppression en masse de l’expérience professionnelle des employés en fonction de leur ID
+     * Batch deletion of employees’ work experience based on their ID
+     * @param ids
+     */
+    void deleteByEmpIds(List<Integer> empIds);
 }

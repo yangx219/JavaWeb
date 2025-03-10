@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service//Constructeur
 public interface EmpService {
@@ -21,4 +22,11 @@ public interface EmpService {
      * @param emp
      */
     void save(Emp emp) throws Exception;
+
+    /**
+     * Suppression en masse des informations des employés
+     * Batch deletion of employee information
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }
