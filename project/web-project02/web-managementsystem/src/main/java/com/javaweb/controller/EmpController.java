@@ -49,7 +49,7 @@ public class EmpController {
      * Ajouter un nouvel employé
      */
     @PostMapping
-    public Result save(@RequestBody Emp emp) {
+    public Result save(@RequestBody Emp emp) throws Exception {
         log.info("Ajouter un nouvel employé: {}",emp);
         empService.save(emp);
         return Result.success();

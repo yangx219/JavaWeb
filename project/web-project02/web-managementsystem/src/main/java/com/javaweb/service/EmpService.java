@@ -20,5 +20,5 @@ public interface EmpService {
      * Ajouter un nouvel employé
      * @param emp
      */
-    void save(Emp emp);
+    void save(Emp emp) throws Exception;
 }
