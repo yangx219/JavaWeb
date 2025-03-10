@@ -47,4 +47,11 @@ public interface EmpMapper {
      * @param ids
      */
     void deleteByIds(List<Integer> ids);
+
+    /**
+     * Rechercher les informations et les expériences des employés selon l’ID
+     * @param id
+     * @return
+     */
+    Emp getById(Integer id);
 }

@@ -120,4 +120,9 @@ public class EmpServiceImpl implements EmpService {
 
 
     }
+
+    @Override
+    public Emp getInfo(Integer id) {
+        return empMapper.getById(id);
+    }
 }

@@ -83,5 +83,16 @@ public class EmpController {
         return Result.success();
     }
 
+    /**
+     * Requête et affichage : rechercher les informations des employés selon l’ID
+     * Query and display: Retrieve employee information based on ID
+     */
+    @GetMapping("/{id}")
+    public Result getInfo(@PathVariable Integer id){
+        log.info("rechercher les informations des employés selon l’ID");
+        Emp emp  = empService.getInfo(id);
+        return Result.success(emp);
+    }
+
 }
 
