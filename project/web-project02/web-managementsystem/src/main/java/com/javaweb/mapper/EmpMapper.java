@@ -54,4 +54,11 @@ public interface EmpMapper {
      * @return
      */
     Emp getById(Integer id);
+
+    /**
+     * Modifier un employé selon ID
+     * Edit employee
+     * @param emp
+     */
+    void updateById(Emp emp);
 }

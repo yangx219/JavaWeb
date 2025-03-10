@@ -36,4 +36,11 @@ public interface EmpService {
      * @return
      */
     Emp getInfo(Integer id);
+
+    /**
+     * Modifier un employé
+     * Edit employee
+     * @param emp
+     */
+    void update(Emp emp);
 }

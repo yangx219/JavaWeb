@@ -94,5 +94,16 @@ public class EmpController {
         return Result.success(emp);
     }
 
+    /**
+     * Modifier un employé
+     * Edit employee
+     */
+    @PutMapping
+    public Result update(@RequestBody Emp emp){
+        log.info("Modifier un employé : {}",emp);
+        empService.update(emp);
+        return Result.success();
+    }
+
 }
 
