@@ -2,6 +2,7 @@ package com.javaweb.service;
 
 import com.javaweb.pojo.Emp;
 import com.javaweb.pojo.EmpQueryParam;
+import com.javaweb.pojo.LoginInfo;
 import com.javaweb.pojo.PageResult;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
@@ -43,4 +44,11 @@ public interface EmpService {
      * @param emp
      */
     void update(Emp emp);
+
+    /**
+     * Login
+     * @param emp
+     * @return
+     */
+    LoginInfo login(Emp emp);
 }

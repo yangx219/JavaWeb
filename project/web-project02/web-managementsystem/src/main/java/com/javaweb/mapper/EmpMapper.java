@@ -67,5 +67,16 @@ public interface EmpMapper {
     @MapKey("pos")
     List<Map<String, Object>> countEmpJobData();
 
+    @MapKey("name")
     List<Map<String, Object>> countEmpGenderData();
+
+
+    /**
+     *Rechercher les informations de l'employé en fonction du nom d'utilisateur et du mot de passe.
+     *Query employee information based on username and password.
+     * @param emp
+     * @return
+     */
+    @Select("select id, username, name from emp where username = #{username} and password = #{password}")
+    Emp selectByUsernameAndPassword(Emp emp);
 }

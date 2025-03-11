@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Encapsuler le résultat de login
+ * Encapsuler le résultat de login (connection)
  */
 @Data
 @AllArgsConstructor

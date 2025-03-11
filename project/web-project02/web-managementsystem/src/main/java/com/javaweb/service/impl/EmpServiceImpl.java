@@ -7,6 +7,7 @@ import com.javaweb.mapper.EmpMapper;
 import com.javaweb.pojo.*;
 import com.javaweb.service.EmpLogService;
 import com.javaweb.service.EmpService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
+@Slf4j
 public class EmpServiceImpl implements EmpService {
 
     @Autowired
@@ -144,5 +146,22 @@ public class EmpServiceImpl implements EmpService {
             exprList.forEach(empExpr -> empExpr.setEmpId(emp.getId()));
             empExprMapper.insertBatch(exprList);
         }
+    }
+
+    @Override
+    public LoginInfo login(Emp emp) {
+        //1. Appeler le mapper selon username et mot de passe
+        Emp e = empMapper.selectByUsernameAndPassword(emp);
+
+        /* 2. Vérifier si cet employé existe,
+           et s'il existe, assembler les informations de connexion réussie*/
+        if (e != null) {
+            log.info("Connection success, userInfo:{}", e);
+            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),"");
+
+        }
+
+        //3.si exist pas
+        return null;
     }
 }
