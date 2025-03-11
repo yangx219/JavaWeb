@@ -88,4 +88,24 @@
         from emp e left join emp_expr ee on e.id = ee.emp_id
         where e.id = #{id}
     </select>
+    <!-- Compter le nombre d'employés dans le poste -->
+    <select id="countEmpJobData" resultType="java.util.Map">
+        select
+            (case job when 1 then 'Affaires étudiantes'
+                      when 2 then 'Conférencier'
+                      when 3 then 'Services d’emploi'
+                      when 4 then 'Recherche académique'
+                      when 5 then 'Consultation'
+                      else 'Autre' end)  jobName,
+            count(*) num
+        from emp group by job
+        order by num
+    </select>
+    <!-- 统计员工的性别信息 -->
+    <select id="countEmpGenderData" resultType="java.util.Map">
+        select
+            if(gender = 1, 'Homme', 'Femme') as name,
+            count(*) as value
+        from emp group by gender ;
+    </select>
 </mapper>

@@ -2,13 +2,11 @@ package com.javaweb.mapper;
 
 import com.javaweb.pojo.Emp;
 import com.javaweb.pojo.EmpQueryParam;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Infos de employés
@@ -61,4 +59,13 @@ public interface EmpMapper {
      * @param emp
      */
     void updateById(Emp emp);
+
+    /**
+     * Compter le nombre d’employés dans le poste
+     * @return
+     */
+    @MapKey("pos")
+    List<Map<String, Object>> countEmpJobData();
+
+    List<Map<String, Object>> countEmpGenderData();
 }
