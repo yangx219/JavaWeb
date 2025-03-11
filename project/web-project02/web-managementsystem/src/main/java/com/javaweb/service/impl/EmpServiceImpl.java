@@ -7,6 +7,7 @@ import com.javaweb.mapper.EmpMapper;
 import com.javaweb.pojo.*;
 import com.javaweb.service.EmpLogService;
 import com.javaweb.service.EmpService;
+import com.javaweb.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -157,7 +160,14 @@ public class EmpServiceImpl implements EmpService {
            et s'il existe, assembler les informations de connexion réussie*/
         if (e != null) {
             log.info("Connection success, userInfo:{}", e);
-            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),"");
+            //Générer JWT token
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", e.getId());
+            claims.put("username", e.getUsername());
+            String jwt = JwtUtils.generateJwt(claims);
+            System.out.println(jwt);
+
+            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),jwt);
 
         }
 
