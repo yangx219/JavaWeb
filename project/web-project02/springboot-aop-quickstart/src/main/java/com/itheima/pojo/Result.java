@@ -8,19 +8,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Result {
-    private Integer code;//响应码，1 代表成功; 0 代表失败
-    private String msg;  //响应码 描述字符串
-    private Object data; //返回的数据
+    private Integer code;//Code de réponse : 1 signifie succès, 0 signifie échec
+    private String msg;  //Message de réponse
+    private Object data; //Données retournées
 
-    //增删改 成功响应
+    //Réponse de succès pour les opérations d'ajout, de suppression et de modification
     public static Result success(){
         return new Result(1,"success",null);
     }
-    //查询 成功响应
+    //Réponse de succès pour les opérations de recherche
     public static Result success(Object data){
         return new Result(1,"success",data);
     }
-    //失败响应
+    //Réponse d'échec
     public static Result error(String msg){
         return new Result(0,msg,null);
     }

@@ -7,23 +7,23 @@ import java.util.List;
 
 @Mapper
 public interface DeptMapper {
-    //查询全部部门数据
+    //Rechercher tous les départements
     @Select("select * from dept")
     List<Dept> list();
 
-    //删除部门
+    //Supprimer un département
     @Delete("delete from dept where id = #{id}")
     void delete(Integer id);
 
-    //新增部门
+    //Ajouter un département
     @Insert("insert into dept(name, create_time, update_time) values (#{name},#{createTime},#{updateTime})")
     void save(Dept dept);
 
-    //根据ID查询
+    //Rechercher un département par ID
     @Select("select * from dept where id = #{id}")
     Dept getById(Integer id);
 
-    //更新部门
+    //Mettre à jour un département
     @Update("update dept set name = #{name}, update_time = #{updateTime} where id = #{id}")
     void update(Dept dept);
 }

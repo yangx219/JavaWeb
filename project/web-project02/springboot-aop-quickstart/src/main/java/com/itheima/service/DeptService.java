@@ -6,32 +6,32 @@ import java.util.List;
 
 public interface DeptService {
     /**
-     * 查询所有的部门数据
+     * Rechercher tous les départements
      * @return
      */
     List<Dept> list();
 
     /**
-     * 删除部门
+     * Supprimer un département
      * @param id
      */
     void delete(Integer id);
 
     /**
-     * 新增部门
+     * Ajouter un département
      * @param dept
      */
     void save(Dept dept);
 
     /**
-     * 根据ID查询
+     * Rechercher un département par ID
      * @param id
      * @return
      */
     Dept getById(Integer id);
 
     /**
-     * 更新部门
+     * Mettre à jour un département
      * @param dept
      */
     void update(Dept dept);
