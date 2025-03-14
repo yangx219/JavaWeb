@@ -1,8 +1,8 @@
-package com.itheima.service.impl;
+package com.javaweb.service.impl;
 
-import com.itheima.mapper.DeptMapper;
-import com.itheima.pojo.Dept;
-import com.itheima.service.DeptService;
+import com.javaweb.mapper.DeptMapper;
+import com.javaweb.pojo.Dept;
+import com.javaweb.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

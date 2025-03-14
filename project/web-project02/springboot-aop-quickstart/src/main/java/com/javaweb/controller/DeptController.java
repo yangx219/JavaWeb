@@ -1,8 +1,8 @@
-package com.itheima.controller;
+package com.javaweb.controller;
 
-import com.itheima.pojo.Dept;
-import com.itheima.pojo.Result;
-import com.itheima.service.DeptService;
+import com.javaweb.pojo.Dept;
+import com.javaweb.pojo.Result;
+import com.javaweb.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
