@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Order(1)
 @Component
-@Aspect
+//@Aspect
 public class MyAspect5 {
     //before advice
 //    complete----- @Before("execution(public void com.javaweb.service.impl.DeptServiceImpl.delete(java.lang.Integer))")
@@ -21,7 +21,8 @@ public class MyAspect5 {
 //    @Before("execution(* com.javaweb.service.impl.*.del*(*))")
 //    @Before("execution(* com..service.impl.*.*(..))")
     //list and delete
-    @Before("execution(* com.javaweb.service.impl.DeptServiceImpl.delete(java.lang.Integer))||"+"execution(* com.javaweb.service.impl.DeptServiceImpl.list(..))")
+//    @Before("execution(* com.javaweb.service.impl.DeptServiceImpl.delete(java.lang.Integer))||"+"execution(* com.javaweb.service.impl.DeptServiceImpl.list(..))")
+    @Before("@annotation(com.javaweb.anno.LogOperation)")
     public void before(){
         log.info("MyAspect5 -> before ...");
     }

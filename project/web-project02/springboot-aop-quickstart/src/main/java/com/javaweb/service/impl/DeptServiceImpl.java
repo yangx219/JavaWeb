@@ -1,5 +1,6 @@
 package com.javaweb.service.impl;
 
+import com.javaweb.anno.LogOperation;
 import com.javaweb.mapper.DeptMapper;
 import com.javaweb.pojo.Dept;
 import com.javaweb.service.DeptService;
@@ -16,12 +17,14 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptMapper deptMapper;
 
+    @LogOperation
     @Override
     public List<Dept> list() {
         List<Dept> deptList = deptMapper.list();
         return deptList;
     }
 
+    @LogOperation
     @Override
     public void delete(Integer id) {
         deptMapper.delete(id);
