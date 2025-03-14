@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Order(3)
 @Component
-@Aspect
+//@Aspect
 public class MyAspect2 {
     //before advice
     @Before("execution(* com.javaweb.service.impl.*.*(..))")

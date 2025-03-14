@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Order(4)
-@Aspect
+//@Aspect
 @Component
 public class MyAspect1 {
 
