@@ -1,6 +1,8 @@
 package com.javaweb.filter;
 
+import com.javaweb.utils.CurrentHolder;
 import com.javaweb.utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -44,7 +46,10 @@ public class TokenFilter implements Filter {
         }
         //5. Si le token existe, le Vérifier. En cas d'échec de la vérification, renvoyer un message d'erreur avec le code d'état 401
         try{
-            JwtUtils.parseJWT(token);
+            Claims claims = JwtUtils.parseJWT(token);
+            Integer empId = Integer.valueOf(claims.get("id").toString());
+            CurrentHolder.setCurrentId(empId);
+            log.info("Current employee id : {} " + empId);//enregistrer dans le ThreadLocal
         }catch (Exception e){
             log.info("Token invalide, réponse 401.");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -55,6 +60,9 @@ public class TokenFilter implements Filter {
         //6. Si la vérification est réussie, laisser passer
         log.info("Token valide, laisser passer");
         filterChain.doFilter(request, response);
+
+        //7. supprimer le data dans le ThreadLocal
+        CurrentHolder.remove();
     }
 
 

@@ -1,5 +1,6 @@
 package com.javaweb.controller;
 
+import com.javaweb.anno.Log;
 import com.javaweb.pojo.Dept;
 import com.javaweb.pojo.Result;
 import com.javaweb.service.DeptService;
@@ -66,6 +67,7 @@ public class DeptController {
      * method 3 : omettre @RequestParam
      * mais le nome est pareil
      */
+    @Log
     @DeleteMapping
     public Result delete(Integer id) {
 //        System.out.println("Supprimer la department par ID: " + id);
@@ -79,6 +81,7 @@ public class DeptController {
     /**
      * Ajouter le department
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Dept dept) {
 //        System.out.println("Ajouter le department : " + dept);
@@ -110,6 +113,7 @@ public class DeptController {
      * Modifier le department
      * @param dept
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Dept dept) {
         System.out.println("Updater le department : " + dept);
