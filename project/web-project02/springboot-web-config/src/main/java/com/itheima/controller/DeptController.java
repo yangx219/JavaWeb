@@ -4,9 +4,17 @@ import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result;
 import com.itheima.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * - IOC容器中的bean默认使用的作用域：singleton (单例)
+ * - 默认singleton的bean，在容器启动时被创建，可以使用@Lazy注解来延迟初始化(延迟到第一次使用时)
+ */
+//@Lazy//延迟初始化(延迟到第一次使用时)
+@Scope("prototype")//bean作用域为非单例
 @RestController
 public class DeptController {
 
