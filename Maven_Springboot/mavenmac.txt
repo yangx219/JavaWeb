@@ -31,4 +31,9 @@
     打开conf 里边有settings.xml
 
 
-del /s *.lastUpdated
+del /s *.lastUpdate
+
+
+springboot 项目创建没有选择jdk17导致项目出现了问题，到改项目里
+rm -rf ~/.m2/repository/org/springframework
+mvn clean install
