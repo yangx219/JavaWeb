@@ -1,7 +1,7 @@
 <script setup>
 //INTRO
 
-import {ref} from 'vue';
+import {ref,onMounted} from 'vue';
 import axios from 'axios';
 
 //response data
@@ -16,6 +16,10 @@ const search = async () =>{
   const result = await axios.get(`https://web-server.itheima.net/emps/list?name=${name.value}&gender=${gender.value}&job=${job.value}`)
   userList.value = result.data.data;
 }
+//hook 自动加载数据
+onMounted (() => {
+  search ;
+})
 </script>
 
 <template>
