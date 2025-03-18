@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import {ref } from 'vue'
 
 const tableData = [
   {
@@ -39,6 +39,23 @@ const handleSizeChange = (val) => {
 const handleCurrentChange = (val) => {
   console.log(`current page: ${val}`)
 }
+
+
+//
+const dialogTableVisible = ref(false)
+
+
+//from表单
+const formInline = ref({
+  user: '',
+  region: '',
+  date: '',
+})
+
+const onSubmit = () => {
+  console.log('submit!')
+}
+
 </script>
 
 <template>
@@ -83,11 +100,62 @@ const handleCurrentChange = (val) => {
     />
   </div>
 
+  <div>
+    <el-button plain @click="dialogTableVisible = true">
+        Open a Table nested Dialog
+    </el-button>
+
+    <el-dialog v-model="dialogTableVisible" title="Shipping address" width="800">
+    <el-table :data="tableData">
+      <el-table-column property="date" label="Date" width="150" />
+      <el-table-column property="name" label="Name" width="200" />
+      <el-table-column property="address" label="Address" />
+    </el-table>
+    </el-dialog>
+  </div>
+
+
+  <div>
+    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form-item label="Approved by">
+      <el-input v-model="formInline.user" placeholder="Approved by" clearable />
+    </el-form-item>
+    <el-form-item label="Activity zone">
+      <el-select
+        v-model="formInline.region"
+        placeholder="Activity zone"
+        clearable
+      >
+        <el-option label="Zone one" value="shanghai" />
+        <el-option label="Zone two" value="beijing" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Activity time">
+      <el-date-picker
+        v-model="formInline.date"
+        type="date"
+        placeholder="Pick a date"
+        clearable
+      />
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="onSubmit">Query</el-button>
+    </el-form-item>
+  </el-form>
+  </div>
 </template>
 
 <style scoped>
 .mb-4{
     margin-bottom: 10px;
+}
+
+.demo-form-inline .el-input {
+  --el-input-width: 220px;
+}
+
+.demo-form-inline .el-select {
+  --el-select-width: 220px;
 }
 
 </style>
