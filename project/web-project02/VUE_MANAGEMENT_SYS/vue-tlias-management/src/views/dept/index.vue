@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { ElMessage } from 'element-plus'
-import { queryAllApi, addDeptApi, queryByIdApi, updateDeptApi  } from '@/api/dept'
+import { ElMessage,ElMessageBox } from 'element-plus'
+import { queryAllApi, addDeptApi, queryByIdApi, updateDeptApi,deleteDeptApi  } from '@/api/dept'
 
 // Liste des départements
 let deptList = ref([])
@@ -38,11 +38,29 @@ const add = () => {
   deptForm.value = { name: '' }
 }
 
-// Suppression d’un département
+// Supprimer un département - via son ID
 const handleDelete = (id) => {
   console.log(`Supprimer l'élément avec l'ID ${id}`);
-  // Implémenter la logique de suppression ici
+  
+  // Lors de la suppression, afficher une boîte de confirmation
+  ElMessageBox.confirm(
+    'Cette action supprimera définitivement ce département. Voulez-vous continuer ?',
+    'Confirmation',
+    {
+      confirmButtonText: 'Confirmer',
+      cancelButtonText: 'Annuler',
+      type: 'warning'
+    }
+  ).then(async () => {
+    // Supprimer le département
+    const result = await deleteDeptApi(id)
+    if (result.code) {
+      ElMessage.success('Suppression réussie')
+      queryAll()
+    }
+  })
 }
+
 
 // État de la boîte de dialogue
 const showDialog = ref(false)
