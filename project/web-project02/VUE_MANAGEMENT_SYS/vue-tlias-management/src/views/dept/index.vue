@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { queryAllApi, addDeptApi, queryInfoApi } from '@/api/dept'
+import { queryAllApi, addDeptApi, queryByIdApi, updateDeptApi  } from '@/api/dept'
 
 // Liste des départements
 let deptList = ref([])
@@ -24,7 +24,7 @@ const handleEdit = async (id) => {
   showDialog.value = true
   deptForm.value = { name: '' }
 
-  const result = await queryInfoApi(id)
+  const result = await queryByIdApi(id)
   if (result.code) {
     deptForm.value = result.data
   }
@@ -64,11 +64,19 @@ const resetForm = () => {
   deptFormRef.value.resetFields()
 }
 
+
+
 // Soumettre le formulaire
 const save = async () => {
   await deptFormRef.value.validate(async valid => {
     if (!valid) return
-    const result = await addDeptApi(deptForm.value)
+     // 提交表单
+     let result = null;
+    if(deptForm.value.id){
+      result = await updateDeptApi(deptForm.value) // 修改
+    }else {
+      result = await addDeptApi(deptForm.value) // 新增
+    } 
     if (result.code) {
       ElMessage.success('Opération réussie')
       showDialog.value = false

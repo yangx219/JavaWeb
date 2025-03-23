@@ -9,7 +9,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
-@Component
+//@Component
 public class DemoInterceptor implements HandlerInterceptor {
     /*Exécuté avant l'exécution de la méthode de la ressource cible.
       Retourne true : passage autorisé

@@ -53,7 +53,11 @@ public class OperationLogAspect {
 
     // exemple : getCurrentUserId
     private int getCurrentUserId() {
-        // Selon la situation réelle
-        return CurrentHolder.getCurrentId();
+        Integer id = CurrentHolder.getCurrentId();
+        if (id == null) {
+            log.warn("⚠️ CurrentHolder 中没有获取到当前用户ID！");
+            return 0; // 或者你可以选择不记录日志，return 0 等
+        }
+        return id;
     }
 }
