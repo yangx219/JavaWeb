@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 @Slf4j
 public class TokenFilter implements Filter {
 
